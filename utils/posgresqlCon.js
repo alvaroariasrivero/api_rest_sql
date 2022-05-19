@@ -1,27 +1,22 @@
-const seql = require('sequelize');
-const {Sequelize} = seql
+const pg = require('pg');
+const { Pool } = pg;
 
-const user = process.env.DB_USER;
-const host = process.env.DB_HOST;
-const database = process.env.DB_DATABASE;
-const password = process.env.DB_PASSWORD;
-const port = process.env.DB_PORT;
+let localPoolConfig = {
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+};
 
-const sequelize = new Sequelize(database, user, password, {
-    host: host,
-    dialect: 'postgres'
-  });
+// const poolConfig = process.env.DATABASE_PG_URL
+//     ? {
+//           connectionString: process.env.DATABASE_PG_URL,
+//           ssl: { rejectUnauthorized: false },
+//       }
+//     : localPoolConfig;
 
-  async function connect(){
-    try {
-        await sequelize.authenticate();
-        console.log('Connection with DB has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-}
+const pool = new Pool(localPoolConfig);
 
-connect()
-
-module.exports = sequelize
+module.exports = pool;
 
