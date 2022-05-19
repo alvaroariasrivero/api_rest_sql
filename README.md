@@ -1,1 +1,1 @@
-# API REST Sequelize
+# API REST PostgreSQL
