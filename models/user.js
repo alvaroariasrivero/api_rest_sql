@@ -1,16 +1,18 @@
 require('dotenv').config();
-const pg = require('pg');
-const { Pool } = pg;
+// const pg = require('pg');
+// const { Pool } = pg;
 
-let localPoolConfig = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
-};
+// let localPoolConfig = {
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     host: process.env.DB_HOST,
+//     port: process.env.DB_PORT,
+//     database: process.env.DB_DATABASE,
+// };
 
-const pool = new Pool(localPoolConfig);
+// const pool = new Pool(localPoolConfig);
+
+const pool = require('../utils/posgresqlCon')
 
 const createUser = async(username, email, password, logged=false) => {
     let client, result;
@@ -27,10 +29,7 @@ const createUser = async(username, email, password, logged=false) => {
     }
     return result
 };
-// password
-// AND password = $2
-// , password
-// , password
+
 const existUser = async(email) => {
     let client, result;
     try{
