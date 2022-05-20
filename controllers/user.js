@@ -46,9 +46,20 @@ const loginUser = async(req, res) => {
     }
 };
 
+const logout = async(req, res) => {
+    let data;
+    try {
+        data = await User.setLoggedFalse(req.params.email)
+        res.status(200).json({message: 'Token deleted'});
+    } catch (error) {
+        console.log('Error:', error);
+    }
+};
+
 const user = {
     signUp,
-    loginUser
+    loginUser,
+    logout
 }
 
 module.exports = user

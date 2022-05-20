@@ -12,7 +12,7 @@
 
 // const pool = new Pool(localPoolConfig);
 
-const pool = require('../utils/posgresqlCon')
+const pool = require('../utils/posgresqlCon');
 
 const createUser = async(username, email, password, logged=false) => {
     let client, result;
@@ -61,7 +61,7 @@ const setLoggedTrue = async(email) => {
         client.release()
     }
     return result
-}
+};
 
 const setLoggedFalse = async(email) => {
     let client, result;
@@ -79,7 +79,7 @@ const setLoggedFalse = async(email) => {
         client.release()
     }
     return result
-}
+};
 
 const users = {
     createUser,
@@ -88,4 +88,4 @@ const users = {
     setLoggedFalse
 };
 
-module.exports = users
+module.exports = users;
