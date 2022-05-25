@@ -11,5 +11,7 @@ CREATE TABLE posts
 id_post serial NOT NULL PRIMARY KEY,
 title VARCHAR(50) NOT NULL,
 content VARCHAR(140) NOT NULL,
+date timestamp default current_timestamp,
+id_user INT NOT NULL,
 FOREIGN KEY (id_user) REFERENCES users (id_user)
 )
