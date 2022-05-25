@@ -5,7 +5,7 @@ const createPost = async(post) => {
     let client, result;
     try{
         client = await pool.connect();
-        const data = await client.query(`INSERT INTO posts(title,content,id_author)
+        const data = await client.query(`INSERT INTO posts(title,content,id_user)
                                         VALUES ($1,$2,
                                         (SELECT id_user FROM users WHERE email=$3))`
                                         ,[title,content,email])

@@ -3,6 +3,7 @@ require('dotenv').config();
 require('./utils/posgresqlCon');
 
 const usersApiRouter = require('./routes/user');
+const postApiRouter = require('./routes/post');
 
 const app = express();
 const port = 3000;
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', usersApiRouter);
+app.use('/api', postApiRouter)
 
 // app.use(errors.error404);
 
