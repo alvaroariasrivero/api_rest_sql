@@ -10,8 +10,25 @@ const createPost = async(req, res) => {
     }
 };
 
+const getPost = async(req, res) => {
+    let data;
+    const email = req.params.email
+    try {
+        if(email){
+            data = await Post.getPostsByEmail(email);
+            res.status(200).json(data);
+        }else{
+            data = await Post.getAllPosts();
+            res.status(200).json(data);
+        }
+    } catch (error) {
+        res.status(400).json({"error":error})
+    }
+}
+
 const posts = {
-    createPost
+    createPost,
+    getPost
 };
 
 module.exports = posts
