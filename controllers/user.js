@@ -25,6 +25,7 @@ const loginUser = async(req, res) => {
     try {
         const {email, password} = req.body
         data = await User.existUser(email);
+        console.log(data)
         if(!data){
             res.status(400).json({ msg: 'Incorrect user or password'}); 
         }else{
