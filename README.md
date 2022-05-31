@@ -23,7 +23,7 @@ Start project in localhost:3000
 npm start
 ```
 
-## Queries
+## SQL Queries
 
 First of all, you need to create the tables in your PostgreSQL database
 
