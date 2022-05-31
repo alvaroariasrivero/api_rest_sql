@@ -59,3 +59,51 @@ DB_PORT
 DB_DATABASE
 ULTRA_SECRET_KEY
 ```
+
+## How to use it
+
+Go to your Rest Client (I use Advanced Rest Client) to make your requests.
+
+First of all we will get the posts that we have in our database
+
+![img](./assets/gif1.gif)
+
+Then, if we add an email in the URL, we can select posts by authors
+
+![img](./assets/gif2.gif)
+
+Now, we are going to create a user profile to upload posts.
+
+![img](./assets/gif3.gif)
+
+As you can see in your database, the create profile has a column called logged with the false value by default.
+
+![img](./assets/loggedfalse.png)
+
+Now, make a post request to log in with the new account
+
+![img](./assets/gif4.gif)
+
+The logged value will change the logged value in your database
+
+![img](./assets/loggedtrue.png)
+
+Paste your token in the "access_token" header, we need the logged value true and our token to send posts
+
+![img](./assets/gif5.gif)
+
+Then wi will make a GET request to logout our user, this only will change the logged value to false, so our token isn't value anymore and the API REST will send us the message:
+
+```javascript
+{ msg: 'Token deleted' }
+```
+
+![img](./assets/gif6.gif)
+
+If we try to send a new post, the API REST will send the message:
+
+```javascript
+{ msg: 'Invalid token' }
+```
+
+![img](./assets/gif7.gif)
