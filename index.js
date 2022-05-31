@@ -18,8 +18,6 @@ app.get('/', (req, res) => {
 app.use('/api', usersApiRouter);
 app.use('/api', postApiRouter)
 
-// app.use(errors.error404);
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 });
