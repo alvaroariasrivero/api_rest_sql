@@ -84,7 +84,7 @@ Now, make a post request to log in with the new account
 
 ![img](./assets/gif4.gif)
 
-The logged value will change the logged value in your database
+The logged value will change in your database
 
 ![img](./assets/loggedtrue.png)
 
